@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../inventory/domain/repositories/movement_repository.dart';
 import '../../../inventory/presentation/providers/inventory_providers.dart';
-import '../../../products/domain/entities/category.dart';
 import '../../../products/presentation/providers/product_providers.dart';
 import '../../data/file_inventory_export_repository.dart';
 import '../../domain/entities/inventory_summary.dart';
@@ -51,11 +50,6 @@ final stockAlertsListProvider = FutureProvider<List<StockAlert>>((ref) async {
 final categoryNamesProvider = FutureProvider<Map<int, String>>((ref) async {
   final lookup = await ref.watch(categoryLookupProvider).call();
   return lookup;
-});
-
-/// Categories as a plain list, for filters.
-final categoriesProvider = FutureProvider<List<Category>>((ref) async {
-  return ref.watch(categoryRepositoryProvider).findAll();
 });
 
 /// Reads the ledger from the database, honouring the active filter.

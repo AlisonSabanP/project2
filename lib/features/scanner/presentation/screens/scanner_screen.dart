@@ -78,20 +78,25 @@ class _ScannerScreenState extends ConsumerState<ScannerScreen> {
 
   Future<void> _onDetect(BarcodeCapture capture) async {
     if (_handling) return;
-    final code = capture.barcodes
-        .map((barcode) => barcode.rawValue)
-        .firstWhere((value) => value != null && value.trim().isNotEmpty,
-            orElse: () => null);
+    String? code;
+    for (final barcode in capture.barcodes) {
+      final value = barcode.rawValue;
+      if (value != null && value.trim().isNotEmpty) {
+        code = value;
+        break;
+      }
+    }
     if (code == null) return;
 
     _handling = true;
     try {
       await _controller.stop();
-      final product = await ref.read(resolveScannedCodeProvider).call(code);
+      final resolution = await ref.read(resolveScannedCodeProvider).call(code);
       if (!mounted) return;
 
+      final product = resolution.product;
       if (product == null) {
-        await showUnknownCodeSheet(context, code);
+        await showUnknownCodeSheet(context, resolution.code);
       } else {
         await _showProduct(product);
       }

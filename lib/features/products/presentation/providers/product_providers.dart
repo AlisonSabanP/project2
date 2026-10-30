@@ -5,6 +5,7 @@ import '../../../../core/providers/database_provider.dart';
 import '../../data/drift_category_repository.dart';
 import '../../data/drift_product_repository.dart';
 import '../../data/share_label_repository.dart';
+import '../../domain/entities/category.dart';
 import '../../domain/entities/product.dart';
 import '../../domain/entities/product_draft.dart';
 import '../../domain/repositories/category_repository.dart';
@@ -106,6 +107,11 @@ final productListProvider = FutureProvider<List<Product>>((ref) async {
 /// Live list of categories used by filters and forms.
 final categoryListProvider = StreamProvider((ref) {
   return ref.watch(categoryRepositoryProvider).watchAll();
+});
+
+/// Categories as a plain list, used by filters and the reports.
+final categoriesProvider = FutureProvider<List<Category>>((ref) async {
+  return ref.watch(categoryRepositoryProvider).findAll();
 });
 
 /// Single product, refreshed whenever the ledger changes its stock.

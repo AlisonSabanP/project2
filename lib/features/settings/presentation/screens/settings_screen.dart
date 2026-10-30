@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/error/domain_exception.dart';
-import '../../domain/entities/local_profile.dart';
+import '../../../products/presentation/providers/product_providers.dart';
 import '../providers/settings_providers.dart';
 
 /// Local profile screen: the responsible name applied to every movement.
@@ -117,9 +117,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     if (!(_formKey.currentState?.validate() ?? false)) return;
     setState(() => _saving = true);
     try {
-      await ref.read(saveProfileProvider).call(
-            LocalProfile(responsibleName: _nameController.text.trim()),
-          );
+      await ref.read(saveProfileProvider).call(_nameController.text.trim());
       ref.invalidate(localProfileProvider);
       if (!mounted) return;
       ScaffoldMessenger.of(context)

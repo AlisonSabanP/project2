@@ -7,7 +7,6 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/error/domain_exception.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
-import '../../domain/entities/product.dart';
 import '../../domain/entities/product_draft.dart';
 import '../../domain/services/product_validator.dart';
 import '../providers/product_providers.dart';
@@ -43,7 +42,6 @@ class _ProductFormScreenState extends ConsumerState<ProductFormScreen> {
   bool _active = true;
   bool _submitting = false;
   bool _loading = false;
-  Product? _loaded;
 
   @override
   void initState() {
@@ -59,7 +57,6 @@ class _ProductFormScreenState extends ConsumerState<ProductFormScreen> {
       final product = await ref.read(productQueriesProvider).byId(widget.productId!);
       if (!mounted) return;
       setState(() {
-        _loaded = product;
         _codeController.text = product.code;
         _nameController.text = product.name;
         _descriptionController.text = product.description ?? '';

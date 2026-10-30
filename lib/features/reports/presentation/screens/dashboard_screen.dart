@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/error/domain_exception.dart';
 import '../../../../core/formatting/formatters.dart';
-import '../../../../core/widgets/async_value_view.dart';
 import '../../../../core/widgets/stock_badge.dart';
 import '../../../inventory/presentation/providers/inventory_providers.dart';
 import '../../../inventory/presentation/widgets/movement_tile.dart';

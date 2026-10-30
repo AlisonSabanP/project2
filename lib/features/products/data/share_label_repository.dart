@@ -4,8 +4,8 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../../../../core/formatting/formatters.dart';
-import '../../domain/repositories/label_export_repository.dart';
+import '../../../core/formatting/formatters.dart';
+import '../domain/repositories/label_export_repository.dart';
 
 /// Saves the label PNG and hands it to the platform share sheet, so the user
 /// can send it to a printer app, a chat or cloud storage.

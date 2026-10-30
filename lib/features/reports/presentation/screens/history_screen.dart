@@ -4,7 +4,6 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../../../core/error/domain_exception.dart';
 import '../../../../core/formatting/formatters.dart';
-import '../../../../core/widgets/async_value_view.dart';
 import '../../../inventory/domain/entities/movement.dart';
 import '../../../inventory/presentation/providers/inventory_providers.dart';
 import '../../../inventory/presentation/widgets/movement_tile.dart';
@@ -145,13 +144,8 @@ class HistoryScreen extends ConsumerWidget {
               }
               final productNames = <int, String>{
                 for (final Product product
-                    in productsAsync.valueOrNull ?? const <Product>[])
+                    in productsAsync.value ?? const <Product>[])
                   product.id!: product.name,
-              };
-              final categoryNames = <int, String>{
-                for (final Category category
-                    in categoriesAsync.valueOrNull ?? const <Category>[])
-                  category.id: category.name,
               };
               return Column(
                 children: [
@@ -170,7 +164,7 @@ class HistoryScreen extends ConsumerWidget {
               products: productsAsync.requireValue,
               categoryNames: <int, String>{
                 for (final Category category
-                    in categoriesAsync.valueOrNull ?? const <Category>[])
+                    in categoriesAsync.value ?? const <Category>[])
                   category.id: category.name,
               },
             ),

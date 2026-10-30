@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'features/reports/presentation/screens/dashboard_screen.dart';
-import 'features/products/presentation/screens/product_list_screen.dart';
-import 'features/scanner/presentation/screens/scanner_screen.dart';
-import 'features/settings/presentation/screens/settings_screen.dart';
-import 'features/reports/presentation/screens/history_screen.dart';
+import '../features/reports/presentation/screens/dashboard_screen.dart';
+import '../features/products/presentation/screens/product_list_screen.dart';
+import '../features/scanner/presentation/screens/scanner_screen.dart';
+import '../features/settings/presentation/screens/settings_screen.dart';
+import '../features/reports/presentation/screens/history_screen.dart';
 
 /// Bottom navigation shell with the five top level sections.
 class AppShell extends StatefulWidget {

@@ -37,7 +37,7 @@ class AsyncValueView<T> extends StatelessWidget {
         ),
       ),
       error: (error, stackTrace) => _ErrorView(
-        message: error is Object ? error.toString() : 'Error desconocido',
+        message: error.toString(),
         onRetry: onRetry,
       ),
       data: (data) {
